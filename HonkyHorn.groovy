@@ -7,7 +7,7 @@ def URL="https://github.com/madhephaestus/HonkyHorn.git"
 def file="bez.json"
 
 //Git stored file loaded but not saved
-BezierEditor editor = new BezierEditor(URL, file,20)
+BezierEditor editor = new BezierEditor(ScriptingEngine.fileFromGit(URL, file),20)
 //Git file loaded and saved. THis will do a git call on each event of change
 //BezierEditor editor = new BezierEditor(URL, file,10)
 
