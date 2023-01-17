@@ -15,4 +15,6 @@ ArrayList<Transform>  transforms = editor.transforms()
 
 def modelParts = CSG.unionAll(Extrude.hull(new Cube(20).toCSG(), transforms))
 
+modelParts.setName("Horn")
+
 return [editor.get(),modelParts]
