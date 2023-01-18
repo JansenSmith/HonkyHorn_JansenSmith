@@ -18,12 +18,12 @@ def sectionOneParts =[]
 def sectionTwoParts = []
 double rad = 10
 for(int i=0;i<transforms.size();i++) {
-	rad +=0.1;
+	rad +=1;
 	sectionOneParts.add(new Cylinder(rad, 0.01).toCSG().roty(90));
 }
 for(int i=0;i<transforms.size();i++) {
 	sectionTwoParts.add(new Cylinder(rad, 0.01).toCSG().roty(90));
-	rad +=0.2;
+	rad +=2;
 }
 
 def modelParts = CSG.unionAll(Extrude.hull(sectionOneParts, transforms))
