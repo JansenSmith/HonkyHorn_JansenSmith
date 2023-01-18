@@ -6,7 +6,7 @@ import eu.mihosoft.vrl.v3d.*;
 def URL="https://github.com/madhephaestus/HonkyHorn.git"
 
 //Git stored file loaded but not saved
-BezierEditor editor = new BezierEditor(URL, "bez.json",10)
+BezierEditor editor = new BezierEditor(URL, "bez.json",20)
 BezierEditor editor2 = new BezierEditor(URL, "bez2.json",20)
 editor2.setStartManip(editor.getEndManip()) 
 //Git file loaded and saved. THis will do a git call on each event of change
