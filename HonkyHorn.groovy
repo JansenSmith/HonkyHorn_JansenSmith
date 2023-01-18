@@ -13,7 +13,7 @@ editor2.setStartManip(editor.getEndManip())
 //BezierEditor editor = new BezierEditor(URL, file,10)
 
 ArrayList<Transform>  transforms = editor.transforms()
-
+ArrayList<Transform>  transforms2 = editor2.transforms()
 def sectionOneParts =[]
 def sectionTwoParts = []
 double rad = 10
@@ -21,13 +21,14 @@ for(int i=0;i<transforms.size();i++) {
 	rad +=1;
 	sectionOneParts.add(new Cylinder(rad, 0.01).toCSG().roty(90));
 }
-for(int i=0;i<transforms.size();i++) {
+for(int i=0;i<transforms2.size();i++) {
 	sectionTwoParts.add(new Cylinder(rad, 0.01).toCSG().roty(90));
 	rad +=2;
 }
+def bell = CSG.unionAll(Extrude.hull(sectionTwoParts, transforms))
 
 def modelParts = CSG.unionAll(Extrude.hull(sectionOneParts, transforms))
-
+					.union(bell)
 modelParts.setName("Horn")
 
 return [editor.get(),editor2.get(),modelParts]
