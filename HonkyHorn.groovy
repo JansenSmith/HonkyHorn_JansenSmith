@@ -6,7 +6,7 @@ import eu.mihosoft.vrl.v3d.*;
 def URL="https://github.com/madhephaestus/HonkyHorn.git"
 
 //Git stored file loaded but not saved
-double numBezierPieces = 10
+def numBezierPieces = 10
 BezierEditor editor = new BezierEditor(ScriptingEngine.fileFromGit(URL, "bez.json"),numBezierPieces)
 BezierEditor editor2 = new BezierEditor(ScriptingEngine.fileFromGit(URL, "bez2.json"),numBezierPieces)
 editor2.setStartManip(editor.getEndManip())
