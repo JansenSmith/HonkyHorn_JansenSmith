@@ -6,8 +6,8 @@ import eu.mihosoft.vrl.v3d.*;
 def URL="https://github.com/madhephaestus/HonkyHorn.git"
 
 //Git stored file loaded but not saved
-def numBezierPieces = 15
-BezierEditor editor = new BezierEditor(ScriptingEngine.fileFromGit(URL, "bez.json"),numBezierPieces)
+def numBezierPieces = 20
+BezierEditor editor = new BezierEditor(ScriptingEngine.fileFromGit(URL, "bez.json"),10)
 BezierEditor editor2 = new BezierEditor(ScriptingEngine.fileFromGit(URL, "bez2.json"),numBezierPieces)
 editor2.setStartManip(editor.getEndManip())
 //Git file loaded and saved. THis will do a git call on each event of change
@@ -25,7 +25,7 @@ CSG makeHorn(def transforms,def transforms2, double rad) {
 	}
 	for(int i=0;i<transforms2.size();i++) {
 		sectionTwoParts.add(new Cylinder(rad,rad, 2,8).toCSG().roty(90));
-		rad +=(i*2);
+		rad +=(i);
 	}
 	def bell = CSG.unionAll(Extrude.hull(sectionTwoParts, transforms2))
 
