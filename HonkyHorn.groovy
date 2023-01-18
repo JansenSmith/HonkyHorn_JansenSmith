@@ -25,7 +25,7 @@ CSG makeHorn(def transforms,def transforms2, double rad) {
 	}
 	for(int i=0;i<transforms2.size();i++) {
 		sectionTwoParts.add(new Cylinder(rad, 2).toCSG().roty(90));
-		rad +=10;
+		rad +=(i*5);
 	}
 	def bell = CSG.unionAll(Extrude.hull(sectionTwoParts, transforms2))
 
