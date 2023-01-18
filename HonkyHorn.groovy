@@ -6,7 +6,7 @@ import eu.mihosoft.vrl.v3d.*;
 def URL="https://github.com/madhephaestus/HonkyHorn.git"
 
 //Git stored file loaded but not saved
-def numBezierPieces = 10
+def numBezierPieces = 15
 BezierEditor editor = new BezierEditor(ScriptingEngine.fileFromGit(URL, "bez.json"),numBezierPieces)
 BezierEditor editor2 = new BezierEditor(ScriptingEngine.fileFromGit(URL, "bez2.json"),numBezierPieces)
 editor2.setStartManip(editor.getEndManip())
@@ -21,11 +21,11 @@ CSG makeHorn(def transforms,def transforms2, double rad) {
 	def sectionTwoParts = []
 	for(int i=0;i<transforms.size();i++) {
 		rad +=1;
-		sectionOneParts.add(new Cylinder(rad, 2).toCSG().roty(90));
+		sectionOneParts.add(new Cylinder(rad,rad, 2,8).toCSG().roty(90));
 	}
 	for(int i=0;i<transforms2.size();i++) {
-		sectionTwoParts.add(new Cylinder(rad, 2).toCSG().roty(90));
-		rad +=(i*5);
+		sectionTwoParts.add(new Cylinder(rad,rad, 2,8).toCSG().roty(90));
+		rad +=(i*2);
 	}
 	def bell = CSG.unionAll(Extrude.hull(sectionTwoParts, transforms2))
 
