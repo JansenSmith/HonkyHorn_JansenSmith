@@ -3,6 +3,7 @@
 import com.neuronrobotics.bowlerstudio.scripting.ScriptingEngine
 import com.neuronrobotics.bowlerkernel.Bezier3d.*;
 import eu.mihosoft.vrl.v3d.*;
+import javafx.scene.shape.Cylinder
 def URL="https://github.com/madhephaestus/HonkyHorn.git"
 
 //Git stored file loaded but not saved
@@ -14,7 +15,18 @@ editor.setStartManip(editor2.getEndManip())
 
 ArrayList<Transform>  transforms = editor.transforms()
 
-def modelParts = CSG.unionAll(Extrude.hull(new Cube(20).toCSG(), transforms))
+def sectionOneParts =[]
+def sectionTwoParts = []
+double rad = 10
+for(int i=0;i<transforms.size();i++) {
+	rad +=0.1;
+	sectionOneParts.add(new Cylinder(rad, 0.01).toCSG());
+}
+for(int i=0;i<transforms.size();i++) {
+	sectionTwoParts.add(new Cylinder(rad, 0.01).toCSG());
+	rad +=0.2;
+}
+def modelParts = CSG.unionAll(Extrude.hull(sectionOneParts, transforms))
 
 modelParts.setName("Horn")
 
