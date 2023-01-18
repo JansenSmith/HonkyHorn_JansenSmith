@@ -3,7 +3,6 @@
 import com.neuronrobotics.bowlerstudio.scripting.ScriptingEngine
 import com.neuronrobotics.bowlerkernel.Bezier3d.*;
 import eu.mihosoft.vrl.v3d.*;
-import javafx.scene.shape.Cylinder
 def URL="https://github.com/madhephaestus/HonkyHorn.git"
 
 //Git stored file loaded but not saved
