@@ -19,10 +19,10 @@ def sectionTwoParts = []
 double rad = 10
 for(int i=0;i<transforms.size();i++) {
 	rad +=1;
-	sectionOneParts.add(new Cylinder(rad, 0.01).toCSG().roty(90));
+	sectionOneParts.add(new Cylinder(rad, 0.01).toCSG().roty(90).toZMin());
 }
 for(int i=0;i<transforms2.size();i++) {
-	sectionTwoParts.add(new Cylinder(rad, 0.01).toCSG().roty(90));
+	sectionTwoParts.add(new Cylinder(rad, 0.01).toCSG().roty(90).toZMin());
 	rad +=4;
 }
 def bell = CSG.unionAll(Extrude.hull(sectionTwoParts, transforms2))
