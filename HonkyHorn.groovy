@@ -16,7 +16,7 @@ editor2.setStartManip(editor.getEndManip())
 ArrayList<Transform>  transforms = editor.transforms()
 ArrayList<Transform>  transforms2 = editor2.transforms()
 
-CSG makeHorn(def transforms,def transforms2, double rad) {
+CSG makeHorn(def transforms,def transforms2, double rad, BezierEditor toAdd1, BezierEditor toAdd2) {
 	def sectionOneParts =[]
 	def sectionTwoParts = []
 	for(int i=0;i<transforms.size();i++) {
@@ -27,6 +27,12 @@ CSG makeHorn(def transforms,def transforms2, double rad) {
 		sectionTwoParts.add(new Cylinder(rad,rad, 2,8).toCSG().roty(90));
 		rad +=(i);
 	}
+	if(toAdd1!=null) {
+		toAdd1.setPartsInternal(sectionOneParts)
+	}
+	if(toAdd2!=null) {
+		toAdd2.setPartsInternal(sectionTwoParts)
+	}
 	def bell = CSG.unionAll(Extrude.hull(sectionTwoParts, transforms2))
 
 	return CSG.unionAll(Extrude.hull(sectionOneParts, transforms))
@@ -34,8 +40,9 @@ CSG makeHorn(def transforms,def transforms2, double rad) {
 			
 }
 
-CSG modelParts = makeHorn( transforms, transforms2, 10)
-					.difference( makeHorn( transforms, transforms2, 6))
+
+CSG modelParts = makeHorn( transforms, transforms2, 10,editor,editor2)
+					.difference( makeHorn( transforms, transforms2, 6,null,null))
 
 modelParts.setName("Horn")
 
