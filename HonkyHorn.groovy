@@ -52,7 +52,7 @@ CSG makeHorn( double rad, BezierEditor editor, BezierEditor editor2,  BezierEdit
 
 
 CSG modelParts = makeHorn(  10,editor,editor2,editor3,	true)
-					//.difference( makeHorn(  6,editor,editor2,editor3,false))
+					.difference( makeHorn(  6,editor,editor2,editor3,false))
 
 modelParts.setName("Horn")
 
@@ -60,5 +60,5 @@ return [
 	editor.get(),
 	editor2.get(),
 	editor3.get(),
-	//modelParts
+	modelParts
 ]
