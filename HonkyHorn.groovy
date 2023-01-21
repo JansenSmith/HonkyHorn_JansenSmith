@@ -13,7 +13,7 @@ BezierEditor editor3 = new BezierEditor(ScriptingEngine.fileFromGit(URL, "bez3.j
 
 //editor2.setStartManip(editor.getEndManip())
 editor.addBezierToTheEnd(editor2)
-editor3.setStartManip(editor.getEndManip())
+editor.addBezierToTheEnd(editor3)
 //Git file loaded and saved. THis will do a git call on each event of change
 //BezierEditor editor = new BezierEditor(URL, file,10)
 
