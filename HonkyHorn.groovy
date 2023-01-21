@@ -11,7 +11,8 @@ BezierEditor editor = new BezierEditor(ScriptingEngine.fileFromGit(URL, "bez.jso
 BezierEditor editor2 = new BezierEditor(ScriptingEngine.fileFromGit(URL, "bez2.json"),numBezierPieces)
 BezierEditor editor3 = new BezierEditor(ScriptingEngine.fileFromGit(URL, "bez3.json"),numBezierPieces)
 
-editor2.setStartManip(editor.getEndManip())
+//editor2.setStartManip(editor.getEndManip())
+editor.addBezierToTheEnd(editor2)
 editor3.setStartManip(editor.getEndManip())
 //Git file loaded and saved. THis will do a git call on each event of change
 //BezierEditor editor = new BezierEditor(URL, file,10)
@@ -51,7 +52,7 @@ CSG makeHorn( double rad, BezierEditor editor, BezierEditor editor2,  BezierEdit
 
 
 CSG modelParts = makeHorn(  10,editor,editor2,editor3,	true)
-					.difference( makeHorn(  6,editor,editor2,editor3,false))
+					//.difference( makeHorn(  6,editor,editor2,editor3,false))
 
 modelParts.setName("Horn")
 
@@ -59,5 +60,5 @@ return [
 	editor.get(),
 	editor2.get(),
 	editor3.get(),
-	modelParts
+	//modelParts
 ]
